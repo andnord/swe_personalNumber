@@ -14,15 +14,15 @@ def personNr(s):
     sistaSiffran = str(personnumret[-1])
     s = s[:-1]
     
-    siffror = [int(d) for d in re.sub(r'\D', '', s)][-9:]
-    summering_av_siffror = sum(x if x < 5 else x - 9 for x in siffror[::2])
-    check_siffror = sum(siffror, summering_av_siffror) % 10
+    digits = [int(d) for d in re.sub(r'\D', '', s)][-9:]
+    even_digitsum = sum(x if x < 5 else x - 9 for x in digits[::2])
+    check_digit = sum(digits, even_digitsum) % 10
     
-    kontrollsiffra = str(10 - check_siffror if check_siffror else 0)
+    kontrollsiffra = str(10 - check_digits if check_digits else 0)
     
     if kontrollsiffra == sistaSiffran:
         return True
     return False
 
 now = datetime.datetime.now()
-print(personNr(""))
+print(personNr("8301128271"))
